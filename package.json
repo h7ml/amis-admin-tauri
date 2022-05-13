@@ -1,17 +1,48 @@
 {
-  "name": "amis-admin-vue",
-  "version": "0.1.0",
+  "name": "amis-admin-tauri",
+  "version": "1.0.0",
   "private": true,
+  "author": "h7ml <h7ml@qq.com>",
+  "keywords": [
+    "vue",
+    "amis",
+    "amis-admin-vue",
+    "renderer",
+    "json",
+    "schema"
+  ],
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/h7ml/amis-admin-tauri.git"
+  },
+  "homepage": "https://amis-admin-vue.vercel.app",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "tauri:build": "vue-cli-service tauri:build",
+    "tauri:serve": "vue-cli-service tauri:serve",
+    "tauri:dev": "vue-cli-service tauri:dev",
+    "prepare": "husky install",
+    "lint:style": "stylelint **/*.{vue,scss} --fix",
+    "commit": "git-cz"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^2.6.14"
   },
   "devDependencies": {
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.5.0",
+    "lint-staged": "^12.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -19,6 +50,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "vue-cli-plugin-tauri": "~1.0.0-rc.2",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
@@ -39,5 +71,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }

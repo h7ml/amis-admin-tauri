@@ -1,4 +1,4 @@
-# amis-admin-vue
+# amis-admin-tauri
 
 ## Project setup
 ```
